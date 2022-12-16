@@ -3,13 +3,15 @@
 #include <Windows.h>
 #include <WinUser.h>
 
+void GDI::init()
+{
+	GDI::windowHandle = FindWindowA(NULL, "AssaultCube");
+	GDI::windowDC = GetDC(windowHandle);
+}
+
 void GDI::DrawTextGDI(float screenx, float screeny, const char* text)
 {
-
-	auto windowHandle = FindWindowA(NULL, "AssaultCube");
-	auto windowDC = GetDC(windowHandle);
-
 	SetBkMode(windowDC, TRANSPARENT);
-	SetTextColor(windowDC, RGB(255, 255, 255));
+	SetTextColor(windowDC, RGB(255, 0, 0));
 	TextOutA(windowDC, screenx, screeny, text, strlen(text));
 }
